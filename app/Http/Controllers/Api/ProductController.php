@@ -8,8 +8,6 @@ use App\Helper\ResponseBuilder;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Http\Requests\ProductRequest;
-// use Illuminate\Database\Eloquent\ModelNotFoundException;
-// use Illuminate\Auth\Access\AuthorizationException;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -45,25 +43,6 @@ class ProductController extends Controller
         $this->authorize('view', $product);
 
         return ResponseBuilder::success(trans('global.product_detail'),200,new ProductResource($product));
-
-        // } catch (ModelNotFoundException $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => trans('global.product_not_found')
-        //     ], 404);
-
-        // } catch (AuthorizationException $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => trans('global.not_authorized')
-        //     ], 403);
-
-        // } catch (\Exception $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => trans('global.something_wrong'),
-        //     ], 500);
-        // }
     }
 
     /**
@@ -76,36 +55,6 @@ class ProductController extends Controller
         $product->update($request->validated());
 
         return ResponseBuilder::success(trans('global.product_updated'),200,new ProductResource($product));
-
-        // try {
-        //     $product = Product::findOrFail($id);
-        //     $this->authorize('update', $product);
-
-        //     $product->update($request->validated());
-        //     return response()->json([
-        //         'status' => true,
-        //         'message' => trans('global.product_detail'),
-        //         'data' => new ProductResource($product)
-        //     ], 200);
-
-        // } catch (ModelNotFoundException $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => trans('global.product_not_found')
-        //     ], 404);
-
-        // } catch (AuthorizationException $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => trans('global.not_authorized')
-        //     ], 403);
-
-        // } catch (\Exception $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => trans('global.something_wrong'),
-        //     ], 500);
-        // }
     }
 
     /**

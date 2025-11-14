@@ -51,6 +51,8 @@ MySQL
     php artisan key:generate
 ##### Migrate & Seed Database
     php artisan migrate --seed
+##### Generate passport keys
+    php artisan passport:keys
 ##### This will generate:
     A default admin user
     A demo store

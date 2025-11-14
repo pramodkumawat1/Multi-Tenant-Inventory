@@ -79,6 +79,7 @@ class OrderController extends Controller
 
         return ResponseBuilder::successMessage(trans('global.order_placed'),201);
     }
+    
     /**
      * Display the specified resource.
      */
